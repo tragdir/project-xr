@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose"
 const Schema = mongoose.Schema;
 
-const Item = new Schema(
+const Patient = new Schema(
     {
         name: {
             type: String,
@@ -28,4 +28,4 @@ const Item = new Schema(
     { timestamps: true },
 );
 
-module.exports = mongoose.model('item', Item);
+module.exports = mongoose.model('item', Patient);

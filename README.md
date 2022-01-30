@@ -1,15 +1,14 @@
-# Hack.Diversity MERN Stack Template
+# Hack.Diversity MERN Stack Template (Server Only)
 
 ## Getting Started
 
-Wondering how to get this thing working? Well, do we have the READMEs for you!
-
+There are server and clinet folders as follows: 
 - [server](server/README.md)
 - [client](client/README.md)
 
 ### Development Workflow
 
-*Note*: If you are getting set up for the first time, please read the readmes in the client and server folders! You'll need to set up MongoDB to get the app working properly, and there are instructions in the server folder.
+*Note*: If you are getting set up for the first time, please read the readmes in the client and server folders! You'll need to set up MongoDB to get the app working properly.
 
 - Open at least 2 terminal windows/tabs, all of which starting from the root directory of this project (i.e. `~/your/local/path/to/template-react-express-monorepo`).
   - If you use vs code, you can go to Terminal tab and click on `New Terminal` to open a new terminal window in the footer of the vscode window.

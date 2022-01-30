@@ -1,7 +1,7 @@
-/* eslint-disable no-console */
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
+// /* eslint-disable no-console */
+import express from "express";
+import dotenv from "dotenv";
+dotenv.config();
 
 const db = require('./db');
 const itemRouter = require('./routes/item-router');

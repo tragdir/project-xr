@@ -26,8 +26,8 @@ There are server and clinet folders as follows:
   cd server/ && yarn server
   ```
 
-- You should then see the frontend of the app by navigating to `http://localhost:8000/` in a web browser
-- You can also ping the server directly at `http://localhost:3000/`, such as `http://localhost:3000/api/items` (it will be empty if you haven't added items yet)
+- You should then see the frontend of the app by navigating to `http://localhost:3000/` in a web browser
+- You can also ping the server directly at `http://localhost:8000/`, such as `http://localhost:8000/patients` (it will be empty if you haven't added items yet)
 
 ## FAQ
 

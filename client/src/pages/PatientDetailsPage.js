@@ -24,7 +24,7 @@ const PatientDetailsPage = () => {
     };
 
     fetchData();
-  }, []);
+  }, [patient_id]);
 
   const { image_study_description, radiologist_key_findings } = patientDetail;
 

@@ -8,8 +8,6 @@ import { patientImgStudies } from "./tempSeeds/patientFormatedInfo.js";
 
 const app = express();
 app.use(express.json());
-
-console.log(patientImgStudies)
 const PORT = process.env.PORT || 8000;
 
 app.get("/api/patient/data", (req, res) => {

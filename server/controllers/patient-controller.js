@@ -1,29 +1,30 @@
 /* eslint-disable no-undef, arrow-body-style */
-const Item = require('../models/item-model');
 
-getItems = async (req, res) => {
-  await Item.find({}, (err, items) => {
+import {Patient} from "../models/patient-model.js"
+
+export const getItems = async (req, res) => {
+  await Patient.find({}, (err, items) => {
     if (err) {
-      console.error(`[Hack.Diversity React Template] - 400 in 'getItems': ${err}`);
+      console.error(`Error getting patients data': ${err}`);
       return res.status(400).json({
         success: false,
         error: err,
       });
     }
     if (!items.length) {
-      console.error(`[Hack.Diversity React Template] - 404 in 'getItems': Items not found`);
+      console.error(`Items not found`);
       return res.status(200).json({
         success: true,
         items: [],
       });
     }
-    console.log(`[Hack.Diversity React Template] - 200 in 'getItems': Items fetched!`);
+    console.log(`Fetching successful!`);
     return res.status(200).json({
       success: true,
       items: items,
     });
   }).catch(err => {
-    console.error(`[Hack.Diversity React Template] - caught error in 'getItems': ${err}`);
+    console.error(`Error fetching the data': ${err}`);
     console.error(err);
     return res.status(404).json({
       success: false,
@@ -32,8 +33,8 @@ getItems = async (req, res) => {
   });
 };
 
-getItemById = async (req, res) => {
-  await Item.find({ _id: req.params.id }, (err, items) => {
+export const getItemById = async (req, res) => {
+  await Patient.find({ _id: req.params.id }, (err, items) => {
     if (err) {
       console.error(`[Hack.Diversity React Template] - 400 in 'getItemById': ${err}`);
       throw res.status(400).json({
@@ -60,7 +61,7 @@ getItemById = async (req, res) => {
   });
 };
 
-createItem = (req, res) => {
+export const createItem = (req, res) => {
   const body = req.body;
   // console.log('----------------------- createItem: req -----------------------')
   // console.log(req);
@@ -74,7 +75,7 @@ createItem = (req, res) => {
     });
   }
 
-  const item = new Item(body);
+  const item = new Patient(body);
 
   if (!item) {
     console.error(`[Hack.Diversity React Template] - 400 in 'createItem': 'item' is malformed.`);
@@ -115,7 +116,7 @@ createItem = (req, res) => {
     });
 };
 
-updateItem = async (req, res) => {
+export const updateItem = async (req, res) => {
   const body = req.body;
   if (!body) {
     console.error(`[Hack.Diversity React Template] - 400 in 'updateItem': You must provide an item to update.`);
@@ -126,19 +127,24 @@ updateItem = async (req, res) => {
   }
 
   const itemForUpdate = {
-    _id: req.params.id,
-    name: body.name,
-    daysOfWeek: body.daysOfWeek,
-    timeframeNote: body.timeframeNote,
-    priority: body.priority,
-    content: body.content,
+    patient_id: body.patient_id,
+    age: body.age,
+    sex: body.sex,
+    race: body.race,
+    zip: body.zip,
+    latest_bmi: body.latest_bmi,
+    latest_weight: body.latest_weight,
+    latest_height: body.latest_height,
+    test_name: body.test_name,
+    icu_admit: body.icu_admit,
+    mortality: body.mortality
   };
 
   // console.log('----------------------- updateItem: res -----------------------');
   // console.log(res);
 
   try {
-    await Item.findOneAndUpdate({ _id: req.params.id }, itemForUpdate);
+    await Patient.findOneAndUpdate({ _id: req.params.id }, itemForUpdate);
   } catch (err) {
     console.error(`[Hack.Diversity React Template] - caught error in 'updateItem': ${err}`);
     console.error(err);
@@ -156,8 +162,8 @@ updateItem = async (req, res) => {
   });
 };
 
-deleteItem = async (req, res) => {
-  await Item.findOneAndDelete({ _id: req.params.id }, (err, item) => {
+export const deleteItem = async (req, res) => {
+  await Patient.findOneAndDelete({ _id: req.params.id }, (err, item) => {
     if (err) {
       console.error(`[Hack.Diversity React Template] - 400 in 'deleteItem': ${err}`);
       return res.status(400).json({
@@ -183,12 +189,4 @@ deleteItem = async (req, res) => {
     console.error(err);
     return err;
   });
-};
-
-module.exports = {
-  getItems,
-  getItemById,
-  createItem,
-  updateItem,
-  deleteItem,
 };

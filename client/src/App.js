@@ -8,6 +8,7 @@ import NotFound from "./pages/NotFound";
 import AddPatient from "./pages/AddPatient";
 // MUI
 import { CssBaseline } from "@mui/material";
+import { Button } from '@mui/material';  
 
 function App() {
   return (

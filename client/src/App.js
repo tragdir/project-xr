@@ -6,9 +6,10 @@ import PatientDetailsPage from "./pages/PatientDetailsPage";
 import Header from "./components/Header";
 import NotFound from "./pages/NotFound";
 import AddPatient from "./pages/AddPatient";
+import Buttons from "./components/Button"
 // MUI
 import { CssBaseline } from "@mui/material";
-import { Button } from '@mui/material';  
+
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
         />
         <Route path="/patient-info/add" element={<AddPatient />} />
         <Route path="*" element={<NotFound />} />
+        {/* <Route exact path="" element={<Buttons />} /> */}
+     
+      
       </Routes>
     </Router>
   );
